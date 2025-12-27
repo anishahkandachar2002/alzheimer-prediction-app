@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files (keep only necessary ones)
+*.csv
+!ml_dataset_cleaned.csv
+!feature_importance.csv
+
+# Large data files
+ADNIMERGE_*.csv
+MOCA_*.csv
+
+# Model training scripts (not needed for deployment)
+train_models.py
+save_model.py
+clean_dataset.py
+combine_datasets_eda.py
+ml_preprocessing_analysis.py
+
+# Output files
+*.png
+preprocessing_report.txt
+top_correlations.csv
+
+# Local scripts
+run_app.bat
