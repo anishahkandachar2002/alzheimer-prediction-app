@@ -1,6 +1,6 @@
 # 🧠 Alzheimer's Disease Prediction - Explainable AI System
 
-An interactive Streamlit application that provides transparent, explainable predictions for Alzheimer's disease diagnosis using SHAP (SHapley Additive exPlanations).
+An interactive Streamlit application that provides transparent, explainable predictions for Alzheimer's disease diagnosis using LIME (Local Interpretable Model-agnostic Explanations).
 
 ## 🌟 Features
 
@@ -9,9 +9,9 @@ An interactive Streamlit application that provides transparent, explainable pred
 - Real-time predictions with confidence scores
 - Support for all clinical and cognitive test scores
 
-### 2. **Explainable AI with SHAP**
-- **Waterfall Plots**: Show how each feature contributes to the prediction
-- **Force Plots**: Visualize the decision-making process for all diagnosis classes
+### 2. **Explainable AI with LIME**
+- **Feature Importance Visualization**: Show how each feature contributes to the prediction
+- **Local Explanations**: Understand the decision-making process for individual predictions
 - **Feature Contribution Tables**: Detailed breakdown of each feature's impact
 - **Transparency**: Understand exactly why the model made its prediction
 
@@ -70,23 +70,23 @@ The application will open in your default web browser at `http://localhost:8501`
    - **Confidence Score**: Model's confidence in the prediction
    - **Probability Distribution**: Probabilities for all three classes
 
-5. **Understand the Prediction with SHAP:**
-   - **Waterfall Plot**: Shows the top features pushing the prediction toward the predicted class
+5. **Understand the Prediction with LIME:**
+   - **Feature Importance Plot**: Shows the top features contributing to the prediction
    - **Feature Contributions Table**: Lists all features and their impact
-   - **Force Plots**: Interactive visualizations for each diagnosis class
+   - **Local Explanation**: Visualization showing how features influence the specific prediction
 
-### Understanding SHAP Values
+### Understanding LIME Values
 
-- **Red/Positive values**: Push the prediction toward the predicted class
-- **Blue/Negative values**: Push the prediction away from the predicted class
+- **Positive values**: Push the prediction toward the predicted class
+- **Negative values**: Push the prediction away from the predicted class
 - **Magnitude**: Larger absolute values indicate stronger influence
 
 ### Example Interpretation
 
 If predicting "Dementia":
-- High CDRSB (Clinical Dementia Rating) → Pushes toward Dementia (red)
-- Low MMSE (cognitive score) → Pushes toward Dementia (red)
-- High RAVLT scores → Pushes away from Dementia (blue)
+- High CDRSB (Clinical Dementia Rating) → Pushes toward Dementia (positive)
+- Low MMSE (cognitive score) → Pushes toward Dementia (positive)
+- High RAVLT scores → Pushes away from Dementia (negative)
 
 ## 🎯 Input Features
 
@@ -122,13 +122,13 @@ If predicting "Dementia":
   - MCI (Mild Cognitive Impairment)
   - Dementia
 
-## 🔍 Why SHAP?
+## 🔍 Why LIME?
 
-SHAP (SHapley Additive exPlanations) provides:
+LIME (Local Interpretable Model-agnostic Explanations) provides:
 
-1. **Local Interpretability**: Explains individual predictions
-2. **Consistency**: Same feature values always have the same contribution
-3. **Accuracy**: Based on game theory (Shapley values)
+1. **Local Interpretability**: Explains individual predictions by approximating the model locally
+2. **Model-Agnostic**: Works with any machine learning model
+3. **Intuitive**: Easy to understand feature contributions
 4. **Transparency**: Makes the "black box" model transparent
 
 This is crucial for medical applications where understanding the reasoning behind predictions is essential for clinical decision-making.
@@ -149,17 +149,17 @@ This is crucial for medical applications where understanding the reasoning behin
 - Ensure `alzheimer_rf_model.pkl` is in the same directory as `app.py`
 - If missing, run `save_model.py` to generate it
 
-### SHAP visualization issues
+### LIME visualization issues
 - Update matplotlib: `pip install --upgrade matplotlib`
 - Clear Streamlit cache: Click "Clear cache" in the hamburger menu
 
 ### Slow performance
-- SHAP calculations can be computationally intensive
-- Consider using a smaller background dataset for the explainer
+- LIME calculations can be computationally intensive
+- Consider reducing the number of samples for the explainer
 
 ## 📚 References
 
-- **SHAP**: [github.com/slundberg/shap](https://github.com/slundberg/shap)
+- **LIME**: [github.com/marcotcr/lime](https://github.com/marcotcr/lime)
 - **Streamlit**: [streamlit.io](https://streamlit.io)
 - **ADNI**: [adni.loni.usc.edu](http://adni.loni.usc.edu)
 
